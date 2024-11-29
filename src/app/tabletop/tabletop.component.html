@@ -1,0 +1,31 @@
+<main class="main-container">
+    <header>
+        <section class="header-box">
+            <p>Click to place the robot, use the buttons or arrow to move.</p>
+        </section>
+    </header>
+    <div class="aa">
+        @for (row of [].constructor(toyRobot?.width); track row; let y = $index) {
+            <div class="tabletop">
+                @for (col of [].constructor(toyRobot?.height); track col; let x = $index) {
+                    <div class="cell" (click)="placeToyRobot(x, y)">
+                        @if (toyRobot?.x === x && toyRobot?.y === y) {
+                            <img [src]="this.currentImage" alt="empty square" width="80" height="80"/>
+                        }  @else {
+                            <img src="empty.png" alt="empty square" width="80" height="80"/>
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <div class="button-container">
+        <button class="custom-button" (click)="rotateLeftToyRobot()">LEFT</button>
+        <button class="custom-button" (click)="moveToyRobot()">MOVE</button>
+        <button class="custom-button" (click)="rotateRightToyRobot()">RIGHT</button>
+    </div>
+    <button class="report-button" (click)="reportToyRobotPosition()">REPORT</button>
+    
+</main>
+
+
